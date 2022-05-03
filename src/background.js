@@ -1,6 +1,6 @@
 "use strict";
 
-import { app, protocol, BrowserWindow } from "electron";
+import { app, protocol, BrowserWindow, Menu } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -48,6 +48,37 @@ app.on("activate", () => {
   // dock icon is clicked and there are no other windows open.
   if (BrowserWindow.getAllWindows().length === 0) createWindow();
 });
+
+const menuTemplate = [
+  {
+    label: "BinaryVille Shop",
+    submenu: [{ role: "close" }, { label: "Quit", role: "quit" }],
+  },
+  {
+    label: "Edit",
+    submenu: [
+      { role: "undo" },
+      { role: "redo" },
+      { role: "cut" },
+      { role: "copy" },
+      { role: "paste" },
+      { role: "selectall" },
+    ],
+  },
+  {
+    label: "View",
+    submenu: [
+      { role: "resetzoom" },
+      { role: "zoomin" },
+      { role: "zoomout" },
+      { type: "separator" },
+      { role: "togglefullscreen" },
+    ],
+  },
+];
+
+const myAppMenu = Menu.buildFromTemplate(menuTemplate);
+Menu.setApplicationMenu(myAppMenu);
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.

@@ -12,7 +12,7 @@
         <button
           class="btn btn-success btn-sm dropdown-toggle"
           id="cartDropdown"
-          data-toggle="dropdown"
+          data-bs-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
         >
